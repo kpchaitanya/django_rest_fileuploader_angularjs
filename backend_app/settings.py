@@ -40,6 +40,7 @@ INSTALLED_APPS = [
     'rest_framework',
     'fileupload',
     'fileupload_rest',
+    'fileupload_frontend',
 ]
 
 MIDDLEWARE = [
