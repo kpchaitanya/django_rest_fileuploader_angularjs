@@ -11,9 +11,19 @@ myApp.controller('MainCtrl', function($scope, Files){
 
     $scope.newFile = {};
 
+    $scope.deleteFile = function (file) {
+        file.$delete(function (file) {
+            $scope.files = Files.query();
+        });
+    };
+
     $scope.uploadFile = function(){
         console.log('w00t w00t! Upload file invoked!');
-        Files.save($scope.newFile);
+        Files.save($scope.newFile).$promise.then(
+            function (response) {
+                $scope.files.unshift(response);
+            }
+        );
     }
 });
 

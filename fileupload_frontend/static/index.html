@@ -22,6 +22,7 @@
     </form>
     <div ng-repeat="file in files track by file.pk">
         <h3>File {{ file.pk }}</h3>
+        <button ng-click="deleteFile(file)">Delete</button>
         <a href="{{ file.file }}">{{ file.file }}</a>
     </div>
 </div>
