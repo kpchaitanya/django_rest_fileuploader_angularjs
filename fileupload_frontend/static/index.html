@@ -7,6 +7,8 @@
     <script src="node_modules/angular/angular.js"></script>
     <script src="node_modules/angular-resource/angular-resource.js"></script>
 
+    <script src="js/filesModelDirective.js"></script>
+
     <!-- Include my app -->
     <script src="js/app.js"></script>
     <script src="js/files.rest.js"></script>
@@ -14,6 +16,10 @@
 </head>
 <body>
 <div ng-app="fileuploadFrontendApp" ng-controller="MainCtrl">
+    <form class="form" name="form" ng-submit="uploadFile()">
+        <input type="file" files-model="newFile.file">
+        <button type="submit">Upload</button>
+    </form>
     <div ng-repeat="file in files track by file.pk">
         <h3>File {{ file.pk }}</h3>
         <a href="{{ file.file }}">{{ file.file }}</a>
