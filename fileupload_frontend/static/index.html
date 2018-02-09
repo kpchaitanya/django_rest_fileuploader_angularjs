@@ -16,6 +16,16 @@
     <link rel="stylesheet" href="node_modules/bootstrap/dist/css/bootstrap.css"/>
 </head>
 <body>
+
+<!-- Large modal -->
+<div class="modal fade bd-example-modal-lg" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-lg">
+    <div class="modal-content">
+        <iframe id="embedded_pdf_model" src="" width="1000" height="600"></iframe>
+    </div>
+  </div>
+</div>
+
 <div ng-app="fileuploadFrontendApp" ng-controller="MainCtrl">
     <div class="card">
         <form class="form" name="form" ng-submit="uploadFile()">
@@ -29,10 +39,15 @@
     </div>
     <div ng-repeat="file in files track by file.pk">
         <h4>
-            <a href="{{ file.file }}">File {{ file.pk }}</a>
+            <button onclick="document.getElementById('embedded_pdf_model').src = this.value" value="{{ file.file }}" class="btn" type="button" data-toggle="modal" data-target=".bd-example-modal-lg">File {{ file.pk }}</button>
             <button ng-click="deleteFile(file)" class="btn btn-danger">Delete</button>
         </h4>
     </div>
 </div>
+
+<script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+<script src="node_modules/bootstrap/dist/js/bootstrap.js"></script>
+<script src="node_modules/bootstrap/dist/js/bootstrap.min.js"></script>
+
 </body>
 </html>
